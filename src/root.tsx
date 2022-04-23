@@ -2,13 +2,15 @@ import { ThemeProvider, createGlobalStyle } from 'styled-components'
 import { App } from './app'
 import { theme } from 'resources/theme'
 
+import 'normalize.css'
+
 export function Root () {
-    return (
-        <ThemeProvider theme={theme}>
-            <GlobalStyle />
-            <App />
-        </ThemeProvider>
-    )
+  return (
+    <ThemeProvider theme={theme}>
+      <GlobalStyle />
+      <App />
+    </ThemeProvider>
+  )
 }
 
 const GlobalStyle = createGlobalStyle`

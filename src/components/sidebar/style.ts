@@ -46,9 +46,10 @@ export const Button = styled.button`
     font-size: 1.5rem;
     font-weight: 500;
     border: none;
+    border-radius: 5px;
     padding: 10px 0px;
     cursor: pointer;
-    transition: 0.4s;
+    transition: 0.3s;
 
     &:hover {
         background-color: ${({ theme }) => theme.colors.primaryDark};

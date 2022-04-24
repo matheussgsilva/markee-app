@@ -1,5 +1,7 @@
+import { Sidebar } from 'components/sidebar'
+
 export function App () {
   return (
-    <div>App</div>
+    <Sidebar />
   )
 }

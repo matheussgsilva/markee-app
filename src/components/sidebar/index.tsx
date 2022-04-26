@@ -16,7 +16,7 @@ export const Sidebar = () => {
       <C.Button>+ Adicionar arquivo</C.Button>
       <SidebarItem name='Readme.md' active={false} status='saved' />
       <SidebarItem name='License.md' active={false} status='saved' />
-      <SidebarItem name='Links.md' active={true} status='saving' />
+      <SidebarItem name='Links.md' active status='saving' />
     </C.Container>
   )
 }

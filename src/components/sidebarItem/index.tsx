@@ -9,6 +9,7 @@ type Props =
    status: 'editing' | 'saving' | 'saved'
  }
 export const SidebarItem = ({ name, active, status }: Props) => {
+  console.log(active, status)
   return (
     <C.Container>
       <li>

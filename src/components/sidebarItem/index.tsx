@@ -4,9 +4,11 @@ import sheet from 'assets/sheet.svg'
 
 type Props =
  {
-   name : string,
+   name : string
+   active: boolean
+   status: 'editing' | 'saving' | 'saved'
  }
-export const SidebarItem = ({ name }: Props) => {
+export const SidebarItem = ({ name, active, status }: Props) => {
   return (
     <C.Container>
       <li>

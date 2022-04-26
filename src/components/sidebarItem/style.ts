@@ -39,6 +39,7 @@ export const Container = styled.div`
             border: none;
             font-size: 1.5rem;
             color: ${({ theme }) => theme.colors.white};
+            cursor: pointer;
         }
 
         &:hover button {

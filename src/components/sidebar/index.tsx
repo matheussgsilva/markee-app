@@ -2,6 +2,7 @@ import * as C from './style'
 
 import logo from 'assets/markee-logo.png'
 import { SidebarItem } from 'components/sidebarItem'
+import { item } from 'data/item'
 
 export const Sidebar = () => {
   return (
@@ -14,9 +15,7 @@ export const Sidebar = () => {
         <hr />
       </C.Divider>
       <C.Button>+ Adicionar arquivo</C.Button>
-      <SidebarItem name='Readme.md' active={false} status='saved' />
-      <SidebarItem name='License.md' active={false} status='saved' />
-      <SidebarItem name='Links.md' active status='saving' />
+      {item.map((item) => <SidebarItem key={item.id} name={item.name} active={false} status={item.status} id={item.id} content='' />)}
     </C.Container>
   )
 }

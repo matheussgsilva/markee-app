@@ -14,6 +14,7 @@ export const Container = styled.div`
         justify-content: space-between;
         width: 100%;
         padding: 5px 10px;
+        cursor: pointer;
 
         &:hover {
             background-color: ${({ theme }) => theme.colors.lightBlack};
@@ -44,6 +45,10 @@ export const Container = styled.div`
 
         &:hover button {
             opacity: 1;
+        }
+
+        & button:hover {
+            color: ${({ theme }) => theme.colors.primaryDark};
         }
     }
 `

@@ -8,11 +8,15 @@ export const MainContent = () => {
       <C.ContentLeft>
         <C.LeftHeader>
           <img src={fileSheet} alt='folha de papel' />
-          <C.Input autoFocus />
+          <C.Input defaultValue='Sem título' autoFocus />
         </C.LeftHeader>
+        <C.TextArea placeholder='Digite aqui seu markdown' />
       </C.ContentLeft>
       <C.ContentRight>
-        conteúdo
+        <C.Content>
+          <h1>Readme.md</h1>
+          <p>Lorem ipsum dolor sit amet simet</p>
+        </C.Content>
       </C.ContentRight>
     </C.Container>
   )

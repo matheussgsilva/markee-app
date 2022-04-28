@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const Container = styled.div`
+export const Container = styled.aside`
     width: 20%;
     height: 100vh;
     background-color: ${({ theme }) => theme.colors.black};

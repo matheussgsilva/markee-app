@@ -1,10 +1,4 @@
-type MarkeeItem = {
-    id: string
-    name: string
-    content: string
-    active: boolean
-    status: 'editing' | 'saving' | 'saved'
-}
+import { MarkeeItem } from 'resources/files/type'
 
 export const item: MarkeeItem[] = [
   {

@@ -1,6 +1,6 @@
 import * as C from './style'
 
-import fileSheet from 'assets/file-text.png'
+import fileSheet from 'ui/assets/file-text.png'
 
 export const MainContent = () => {
   return (

@@ -1,6 +1,7 @@
-import styled from 'styled-components'
+import { theme } from 'resources/theme'
+import styled from 'styled-components/macro'
 
-export const Container = styled.div`
+export const Container = styled.div<{ active: boolean }>`
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -15,6 +16,8 @@ export const Container = styled.div`
         width: 100%;
         padding: 5px 10px;
         cursor: pointer;
+        background-color: ${props => props.active ? theme.colors.lightBlack : 'transparent'};
+        border-radius: 5px;
 
         &:hover {
             background-color: ${({ theme }) => theme.colors.lightBlack};
@@ -41,6 +44,7 @@ export const Container = styled.div`
             font-size: 1.5rem;
             color: ${({ theme }) => theme.colors.white};
             cursor: pointer;
+            margin-right: -5px;
         }
 
         &:hover button {

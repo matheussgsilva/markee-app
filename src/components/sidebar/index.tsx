@@ -1,6 +1,6 @@
 import * as C from './style'
 
-import logo from 'assets/markee-logo.png'
+import logo from 'ui/assets/markee-logo.png'
 import { SidebarItem } from 'components/sidebarItem'
 import { item } from 'data/item'
 
@@ -15,7 +15,7 @@ export const Sidebar = () => {
         <hr />
       </C.Divider>
       <C.Button>+ Adicionar arquivo</C.Button>
-      {item.map((item) => <SidebarItem key={item.id} name={item.name} active={false} status={item.status} id={item.id} content='' />)}
+      {item.map((item) => <SidebarItem key={item.id} name={item.name} active={item.active} status={item.status} id={item.id} content='' />)}
     </C.Container>
   )
 }

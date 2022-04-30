@@ -25,9 +25,7 @@ export const MainContent = () => {
         />
       </C.ContentLeft>
       <C.ContentRight>
-        <C.Content>
-          {content}
-        </C.Content>
+        <C.Content />
       </C.ContentRight>
     </C.Container>
   )

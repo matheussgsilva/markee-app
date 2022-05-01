@@ -1,4 +1,5 @@
 import { useState, ChangeEvent } from 'react'
+import { marked } from 'marked'
 
 import * as C from './style'
 
@@ -25,7 +26,7 @@ export const MainContent = () => {
         />
       </C.ContentLeft>
       <C.ContentRight>
-        <C.Content />
+        <C.Content dangerouslySetInnerHTML={{ __html: marked(content) }} />
       </C.ContentRight>
     </C.Container>
   )

@@ -1,10 +1,30 @@
 import * as C from './style'
+import { useState } from 'react'
+import { v4 as uuidv4 } from 'uuid'
 
 import logo from 'ui/assets/markee-logo.png'
 import { SidebarItem } from 'components/sidebarItem'
 import { item } from 'data/item'
+import { MarkeeItem } from 'resources/files/type'
 
 export const Sidebar = () => {
+  const [files, setFiles] = useState<MarkeeItem[]>(item)
+
+  const handleCreateNewFile = () => {
+    setFiles(files => files
+      .map(file => ({
+        ...file,
+        active: false,
+      }))
+      .concat({
+        id: uuidv4(),
+        name: 'Sem Título',
+        content: '',
+        active: true,
+        status: 'saved',
+      }))
+  }
+
   return (
     <C.Container>
       <C.Logo>
@@ -14,8 +34,8 @@ export const Sidebar = () => {
         <span>Arquivos</span>
         <hr />
       </C.Divider>
-      <C.Button>+ Adicionar arquivo</C.Button>
-      {item.map((item) => <SidebarItem key={item.id} name={item.name} active={item.active} status={item.status} id={item.id} content='' />)}
+      <C.Button onClick={handleCreateNewFile} >+ Adicionar arquivo</C.Button>
+      {files.map((file) => <SidebarItem key={file.id} name={file.name} active={file.active} status={file.status} id={file.id} content='' />)}
     </C.Container>
   )
 }

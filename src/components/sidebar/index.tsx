@@ -3,9 +3,11 @@ import { useState } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
 import logo from 'ui/assets/markee-logo.png'
-import { SidebarItem } from 'components/sidebarItem'
+import sheet from 'ui/assets/sheet.svg'
+import sheetActive from 'ui/assets/file-text.png'
 import { item } from 'data/item'
 import { MarkeeItem } from 'resources/files/type'
+import { StatusIcon } from 'ui/assets/statusIcon'
 
 export const Sidebar = () => {
   const [files, setFiles] = useState<MarkeeItem[]>(item)
@@ -34,8 +36,20 @@ export const Sidebar = () => {
         <span>Arquivos</span>
         <hr />
       </C.Divider>
-      <C.Button onClick={handleCreateNewFile} >+ Adicionar arquivo</C.Button>
-      {files.map((file) => <SidebarItem key={file.id} name={file.name} active={file.active} status={file.status} id={file.id} content='' />)}
+      <C.Button onClick={handleCreateNewFile}>+ Adicionar arquivo</C.Button>
+      <C.SidebarList>
+        {files.map((file) => (
+          <C.SidebarItem key={file.id} active={file.active}>
+            <C.SidebarItemLink
+              href={`/item/${file.id}`}
+            >
+              <img src={`${!file.active ? sheet : sheetActive}`} alt='folha de papel' />
+              {file.name}
+            </C.SidebarItemLink>
+            {file.active && <StatusIcon status={file.status} />}
+            {!file.active && <C.RemoveButton>x</C.RemoveButton>}
+          </C.SidebarItem>))}
+      </C.SidebarList>
     </C.Container>
   )
 }

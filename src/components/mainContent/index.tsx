@@ -1,5 +1,6 @@
-import { useState, ChangeEvent } from 'react'
+import { ChangeEvent, RefObject } from 'react'
 import { marked } from 'marked'
+import { MarkeeItem } from 'resources/files/type'
 import 'highlight.js/styles/github.css'
 
 import * as C from './style'
@@ -19,11 +20,16 @@ import('highlight.js').then(hljs => {
   })
 })
 
-export const MainContent = () => {
-  const [content, setContent] = useState('')
+type ContentProps = {
+  inputRef: RefObject<HTMLInputElement>
+  file?: MarkeeItem
+  onUpdateFileName: (id: string) => (e: ChangeEvent<HTMLInputElement>) => void
+  onUpdateFileContent: (id: string) => (e: ChangeEvent<HTMLTextAreaElement>) => void
+}
 
-  const handleChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
-    setContent(e.target.value)
+export const MainContent = ({ inputRef, file, onUpdateFileName, onUpdateFileContent }: ContentProps) => {
+  if (!file) {
+    return null
   }
 
   return (
@@ -31,16 +37,21 @@ export const MainContent = () => {
       <C.ContentLeft>
         <C.LeftHeader>
           <img src={fileSheet} alt='folha de papel' />
-          <C.Input defaultValue='Sem título' autoFocus />
+          <C.Input
+            ref={inputRef}
+            value={file.name}
+            onChange={onUpdateFileName(file.id)}
+            autoFocus
+          />
         </C.LeftHeader>
         <C.TextArea
           placeholder='Digite aqui seu markdown'
-          value={content}
-          onChange={handleChange}
+          value={file.content}
+          onChange={onUpdateFileContent(file.id)}
         />
       </C.ContentLeft>
       <C.ContentRight>
-        <C.Content dangerouslySetInnerHTML={{ __html: marked(content) }} />
+        <C.Content dangerouslySetInnerHTML={{ __html: marked(file.content) }} />
       </C.ContentRight>
     </C.Container>
   )

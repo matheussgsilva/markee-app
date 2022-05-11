@@ -1,6 +1,5 @@
 import * as C from './style'
 import { MouseEvent } from 'react'
-import { useNavigate } from 'react-router-dom'
 
 import logo from 'ui/assets/markee-logo.png'
 import sheet from 'ui/assets/sheet.svg'
@@ -16,8 +15,6 @@ type SidebarProps = {
 }
 
 export const Sidebar = ({ files, onNewFile, onSelectFile, onRemoveFile }: SidebarProps) => {
-  const navigate = useNavigate()
-
   return (
     <C.Container>
       <C.Logo>
@@ -30,7 +27,7 @@ export const Sidebar = ({ files, onNewFile, onSelectFile, onRemoveFile }: Sideba
       <C.Button onClick={onNewFile}>+ Adicionar arquivo</C.Button>
       <C.SidebarList>
         {files.map((file) => (
-          <C.SidebarItem key={file.id} active={file.active} onClick={() => navigate(`/files/${file.id}`)}>
+          <C.SidebarItem key={file.id} active={file.active}>
             <C.SidebarItemLink
               href={`/item/${file.id}`}
               onClick={onSelectFile(file.id)}

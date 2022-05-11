@@ -2,7 +2,6 @@ import { useRef, useState, useEffect, ChangeEvent, MouseEvent } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 import localforage from 'localforage'
 import { MarkeeItem } from 'resources/files/type'
-// import { item } from 'data/item'
 
 export function useFile () {
   const inputRef = useRef<HTMLInputElement>(null)
@@ -51,6 +50,13 @@ export function useFile () {
 
   useEffect(() => {
     localforage.setItem('markee', files)
+  }, [files])
+
+  useEffect(() => {
+    const selectedFile = files.find(file => file.active === true)
+    if (selectedFile) {
+      window.history.replaceState(null, '', `/file/${selectedFile.id}`)
+    }
   }, [files])
 
   useEffect(() => {

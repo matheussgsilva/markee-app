@@ -15,6 +15,8 @@ type SidebarProps = {
 }
 
 export const Sidebar = ({ files, onNewFile, onSelectFile, onRemoveFile }: SidebarProps) => {
+  const filesLength = files.length
+
   return (
     <C.Container>
       <C.Logo>
@@ -25,25 +27,27 @@ export const Sidebar = ({ files, onNewFile, onSelectFile, onRemoveFile }: Sideba
         <hr />
       </C.Divider>
       <C.Button onClick={onNewFile}>+ Adicionar arquivo</C.Button>
-      <C.SidebarList>
-        {files.map((file) => (
-          <C.SidebarItem key={file.id} active={file.active}>
-            <C.SidebarItemLink
-              href={`/item/${file.id}`}
-              onClick={onSelectFile(file.id)}
-            >
-              <img src={`${!file.active ? sheet : sheetActive}`} alt='folha de papel' />
-              {file.name}
-            </C.SidebarItemLink>
-            {file.active && <StatusIcon status={file.status} />}
-            {!file.active && (
-              <C.RemoveButton
-                title={`Remover o arquivo ${file.name}`}
-                onClick={() => onRemoveFile(file.id)}
-              >x
-              </C.RemoveButton>)}
-          </C.SidebarItem>))}
-      </C.SidebarList>
+      <C.SidebarListArea showScroll={filesLength}>
+        <C.SidebarList>
+          {files.map((file) => (
+            <C.SidebarItem key={file.id} active={file.active}>
+              <C.SidebarItemLink
+                href={`/item/${file.id}`}
+                onClick={onSelectFile(file.id)}
+              >
+                <img src={`${!file.active ? sheet : sheetActive}`} alt='folha de papel' />
+                {file.name.length < 15 ? file.name : `${file.name.slice(0, 15)} . . .`}
+              </C.SidebarItemLink>
+              {file.active && <StatusIcon status={file.status} />}
+              {!file.active && (
+                <C.RemoveButton
+                  title={`Remover o arquivo ${file.name}`}
+                  onClick={() => onRemoveFile(file.id)}
+                >x
+                </C.RemoveButton>)}
+            </C.SidebarItem>))}
+        </C.SidebarList>
+      </C.SidebarListArea>
     </C.Container>
   )
 }

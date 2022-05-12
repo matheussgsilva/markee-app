@@ -57,6 +57,22 @@ export const Button = styled.button`
     }
 `
 
+export const SidebarListArea = styled.div<{ showScroll: number }>`
+    max-height: 55vh;
+    overflow-y: ${props => props.showScroll > 8 ? 'scroll' : 'hidden'};
+
+    &::-webkit-scrollbar {
+        background-color: ${({ theme }) => theme.colors.primaryDark};
+        border-radius: 5px;
+        width: 10px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: ${({ theme }) => theme.colors.primary};
+        border-radius: 5px;
+    }
+`
+
 export const SidebarList = styled.ul`
     list-style: none;
     margin: 0px;

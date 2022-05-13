@@ -53,6 +53,7 @@ export const MainContent = ({ inputRef, file, onUpdateFileName, onUpdateFileCont
       <C.ContentRight>
         <C.Content dangerouslySetInnerHTML={{ __html: marked(file.content) }} />
       </C.ContentRight>
+      <C.AddButton />
     </C.Container>
   )
 }

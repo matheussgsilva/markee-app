@@ -3,6 +3,10 @@ import styled from 'styled-components/macro'
 export const Container = styled.div`
     display: flex;
     background-color: ${({ theme }) => theme.colors.white};
+        
+    @media (max-width: 500px) {
+        flex-direction: column;
+    }
 `
 
 export const ContentLeft = styled.div`
@@ -49,6 +53,11 @@ export const ContentRight = styled.div`
     margin-top: 90px;
     border-left: 2px solid rgba(30, 41, 59, 0.12);
     padding: 0px 30px;
+
+    @media (max-width: 500px) {
+        border-left: none;
+        border-top: 2px solid rgba(30, 41, 59, 0.12);
+    }
 `
 
 export const Content = styled.article`
@@ -57,5 +66,50 @@ export const Content = styled.article`
 
     h1, h2, h3, h4, h5, h6 {
         margin-top: 0px;
+    }
+
+    @media (max-width: 500px) {
+        font-size: 1.2rem;
+        padding-top: 15px;
+    }
+`
+
+export const AddButton = styled.button`
+    display: none;
+    width: 30px;
+    height: 30px;
+    font-size: 2rem;
+    padding: 10px;
+    border-radius: 50%;
+    background-color: ${({ theme }) => theme.colors.primaryDark};
+    color: ${({ theme }) => theme.colors.gray};
+    border: none;
+    position: fixed;
+    top: 90vh;
+    left: 90vw;
+
+    &::after {
+        position: absolute;
+        content: '';
+        width: 2px;
+        height: 20px;
+        background-color: ${({ theme }) => theme.colors.gray};
+        margin-top: -10px;
+        margin-left: -1px;
+    }
+
+    &::before {
+        position: absolute;
+        content: '';
+        width: 2px;
+        height: 20px;
+        background-color: ${({ theme }) => theme.colors.gray};
+        margin-top: -10px;
+        margin-left: -1px;
+        transform: rotate(90deg);
+    }
+
+    @media (max-width: 500px) {
+        display: block;
     }
 `

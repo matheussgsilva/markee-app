@@ -1,5 +1,5 @@
 import * as C from './style'
-import { MouseEvent } from 'react'
+import { MouseEvent, useState } from 'react'
 
 import logo from 'ui/assets/markee-logo.png'
 import sheet from 'ui/assets/sheet.svg'
@@ -15,18 +15,24 @@ type SidebarProps = {
 }
 
 export const Sidebar = ({ files, onNewFile, onSelectFile, onRemoveFile }: SidebarProps) => {
+  const [showSidebar, setShowSidebar] = useState(false)
   const filesLength = files.length
 
+  const handleShowSidebar = () => {
+    setShowSidebar(!showSidebar)
+  }
+
   return (
-    <C.Container>
+    <C.Container setSidebar={showSidebar}>
       <C.Logo>
         <img src={logo} alt='Logo Markee' />
       </C.Logo>
-      <C.Divider>
+      <C.ShowButton onClick={handleShowSidebar} setSidebar={showSidebar} />
+      <C.Divider setSidebar={showSidebar}>
         <span>Arquivos</span>
         <hr />
       </C.Divider>
-      <C.Button onClick={onNewFile}>+ Adicionar arquivo</C.Button>
+      <C.Button onClick={onNewFile} setSidebar={showSidebar}>+ <span>Adicionar arquivo</span></C.Button>
       <C.SidebarListArea showScroll={filesLength}>
         <C.SidebarList>
           {files.map((file) => (
@@ -34,9 +40,12 @@ export const Sidebar = ({ files, onNewFile, onSelectFile, onRemoveFile }: Sideba
               <C.SidebarItemLink
                 href={`/item/${file.id}`}
                 onClick={onSelectFile(file.id)}
+                setSidebar={showSidebar}
               >
                 <img src={`${!file.active ? sheet : sheetActive}`} alt='folha de papel' />
-                {file.name.length < 15 ? file.name : `${file.name.slice(0, 15)} . . .`}
+                <span>
+                  {file.name.length < 15 ? file.name : `${file.name.slice(0, 15)} . . .`}
+                </span>
               </C.SidebarItemLink>
               {file.active && <StatusIcon status={file.status} />}
               {!file.active && (

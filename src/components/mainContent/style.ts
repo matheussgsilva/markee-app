@@ -3,6 +3,7 @@ import styled from 'styled-components/macro'
 export const Container = styled.div`
     display: flex;
     background-color: ${({ theme }) => theme.colors.white};
+    z-index: 1;
         
     @media (max-width: 500px) {
         flex-direction: column;
@@ -10,7 +11,7 @@ export const Container = styled.div`
 `
 
 export const ContentLeft = styled.div`
-    width: 550px;
+    max-width: 550px;
     padding: 25px 50px;  
 
     img {
@@ -48,7 +49,7 @@ export const TextArea = styled.textarea`
 `
 
 export const ContentRight = styled.div`
-    width: 550px;
+    max-width: 550px;
     height: 80%;
     margin-top: 90px;
     border-left: 2px solid rgba(30, 41, 59, 0.12);
@@ -78,8 +79,6 @@ export const AddButton = styled.button`
     display: none;
     width: 30px;
     height: 30px;
-    font-size: 2rem;
-    padding: 10px;
     border-radius: 50%;
     background-color: ${({ theme }) => theme.colors.primaryDark};
     color: ${({ theme }) => theme.colors.gray};

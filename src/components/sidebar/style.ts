@@ -40,7 +40,7 @@ export const ShowButton = styled.button<{setSidebar : boolean}>`
     background-color: ${({ theme }) => theme.colors.black};
     margin-left: auto;
     margin-right: -15px;
-    transform: ${props => props.setSidebar ? 'rotate(45deg)' : 'rotate(-135deg)'};
+    transform: ${props => props.setSidebar ? 'rotate(-135deg)' : 'rotate(45deg)'};
     transition: 500ms;
     margin-bottom: 20px;
     padding-bottom: 5px;
@@ -164,7 +164,7 @@ export const SidebarList = styled.ul`
     padding: 0px 25px;
 
     @media (max-width: 500px) {
-        padding: 0px 10px;
+        padding: 0px 15px;
     }
 `
 

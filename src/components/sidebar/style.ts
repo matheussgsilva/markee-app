@@ -1,10 +1,16 @@
 import styled from 'styled-components/macro'
 import { theme } from 'resources/theme'
 
-export const Container = styled.aside`
+export const Container = styled.aside<{setSidebar: boolean}>`
+    position: relative;
     width: 20%;
     height: 100vh;
     background-color: ${({ theme }) => theme.colors.black};
+    transition: 500ms;
+
+    @media (max-width: 500px) {
+        width: ${props => props.setSidebar ? '15%' : '70%'};
+    }
 `
 
 export const Logo = styled.div`
@@ -16,10 +22,60 @@ export const Logo = styled.div`
         margin-top: 45px;
         margin-bottom: 55px;
     }
+
+    @media (max-width: 500px) {
+        img {
+            margin-bottom: 25px;
+        }
+    }
 `
 
-export const Divider = styled.div`
+export const ShowButton = styled.button<{setSidebar : boolean}>`
+    display: none;
+    position: relative;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: none;
+    background-color: ${({ theme }) => theme.colors.black};
+    margin-left: auto;
+    margin-right: -15px;
+    transform: ${props => props.setSidebar ? 'rotate(45deg)' : 'rotate(-135deg)'};
+    transition: 500ms;
+    margin-bottom: 20px;
+    padding-bottom: 5px;
+    padding-right: 4px;
+    z-index: 2;
+
+    &::after {
+        position: absolute;
+        content: '';
+        width: 2px;
+        height: 10px;
+        background-color: ${({ theme }) => theme.colors.gray};
+        margin-top: -4px;
+        margin-left: -5px;
+    }
+
+    &::before {
+        position: absolute;
+        content: '';
+        width: 2px;
+        height: 10px;
+        background-color: ${({ theme }) => theme.colors.gray};
+        margin-top: 0px;
+        margin-right: -4px;
+        transform: rotate(90deg);
+    }
+
+    @media (max-width: 500px) {
+        display: block;
+    }
+`
+
+export const Divider = styled.div<{setSidebar : boolean}>`
     padding: 0px 30px;
+    transition: 400ms;
 
     span {
         position: absolute;
@@ -37,9 +93,19 @@ export const Divider = styled.div`
         height: 2px;
         border: none;
     }
+
+    @media (max-width: 500px) {
+        padding: ${props => props.setSidebar ? '0px 10px' : '0px 25px'};
+
+       span {
+        display: ${props => props.setSidebar ? 'none' : 'inline-block'};
+        font-size: 1.2rem;
+        margin-top: -5px;
+       }
+    }
 `
 
-export const Button = styled.button`
+export const Button = styled.button<{setSidebar: boolean}>`
     width: 78%;
     margin: 25px 30px;
     background-color: ${({ theme }) => theme.colors.primary};
@@ -52,8 +118,23 @@ export const Button = styled.button`
     cursor: pointer;
     transition: 0.3s;
 
+    span {
+        display: inline-block;
+    }
+
     &:hover {
         background-color: ${({ theme }) => theme.colors.primaryDark};
+    }
+
+    @media (max-width: 500px) {
+        width: ${props => props.setSidebar ? '40%' : '78%'};
+        margin: 20px;
+        font-size: 1.2rem;
+
+        span {
+            display: ${props => props.setSidebar ? 'none' : 'inline-block'};
+            transition: 350ms;
+        }
     }
 `
 
@@ -71,12 +152,20 @@ export const SidebarListArea = styled.div<{ showScroll: number }>`
         background-color: ${({ theme }) => theme.colors.primary};
         border-radius: 5px;
     }
+
+    @media (max-width: 500px) {
+        overflow-x: hidden;
+    }
 `
 
 export const SidebarList = styled.ul`
     list-style: none;
     margin: 0px;
     padding: 0px 25px;
+
+    @media (max-width: 500px) {
+        padding: 0px 10px;
+    }
 `
 
 export const SidebarItem = styled.li<{ active: boolean }>`
@@ -100,17 +189,29 @@ export const SidebarItem = styled.li<{ active: boolean }>`
     }
 `
 
-export const SidebarItemLink = styled.a`
+export const SidebarItemLink = styled.a<{setSidebar: boolean}>`
     display: flex;
     align-items: center;
     text-decoration: none;
     font-size: 1.5rem;
     color: ${({ theme }) => theme.colors.white};
 
-    & img {
+    img {
         margin-right: 10px;
         margin-top: -5px;
         color: ${({ theme }) => theme.colors.primary};
+    }
+
+    span {
+        display: inline-block;
+        transition: 500ms;
+    }
+
+    @media (max-width: 500px) {
+        span {
+            display: ${props => props.setSidebar ? 'none' : 'inline-block'};
+            transition: 500ms;
+        }
     }
 `
 

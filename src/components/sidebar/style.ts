@@ -15,7 +15,8 @@ export const Container = styled.aside<{setSidebar: boolean}>`
 
 export const Logo = styled.div`
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
+    padding-left: 12px;
 
     img{
         width: 165px;
@@ -98,9 +99,10 @@ export const Divider = styled.div<{setSidebar : boolean}>`
         padding: ${props => props.setSidebar ? '0px 10px' : '0px 25px'};
 
        span {
-        display: ${props => props.setSidebar ? 'none' : 'inline-block'};
+        opacity: ${props => props.setSidebar ? '0' : '1'};
         font-size: 1.2rem;
         margin-top: -5px;
+        transition: 500ms;
        }
     }
 `
@@ -208,9 +210,15 @@ export const SidebarItemLink = styled.a<{setSidebar: boolean}>`
     }
 
     @media (max-width: 500px) {
+        margin-left: ${props => props.setSidebar ? '-5px' : '0px'};
+
         span {
-            display: ${props => props.setSidebar ? 'none' : 'inline-block'};
-            transition: 500ms;
+            opacity: ${props => props.setSidebar ? '0' : '1'};
+            transition: 600ms;
+        }
+
+        img {
+            margin-right: ${props => props.setSidebar ? '20px' : '10px'};
         }
     }
 `
@@ -226,5 +234,9 @@ export const RemoveButton = styled.button`
 
     &:hover {
         color: ${({ theme }) => theme.colors.primaryDark};
+    }
+
+    @media (max-width: 500px) {
+        opacity: 1;
     }
 `

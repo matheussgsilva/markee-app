@@ -15,8 +15,7 @@ export const Container = styled.aside<{setSidebar: boolean}>`
 
 export const Logo = styled.div`
     display: flex;
-    justify-content: flex-start;
-    padding-left: 12px;
+    justify-content: center;
 
     img{
         width: 165px;
@@ -25,6 +24,9 @@ export const Logo = styled.div`
     }
 
     @media (max-width: 500px) {
+        justify-content: flex-start;
+        padding-left: 12px;
+
         img {
             margin-bottom: 25px;
         }

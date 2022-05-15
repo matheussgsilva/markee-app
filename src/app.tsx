@@ -28,6 +28,7 @@ export function App () {
         file={files.find(file => file.active === true)}
         onUpdateFileName={handleUpdateFileName}
         onUpdateFileContent={handleUpdateFileContent}
+        onNewFile={handleCreateNewFile}
       />
     </C.Container>
   )

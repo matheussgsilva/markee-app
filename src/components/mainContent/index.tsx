@@ -25,9 +25,10 @@ type ContentProps = {
   file?: MarkeeItem
   onUpdateFileName: (id: string) => (e: ChangeEvent<HTMLInputElement>) => void
   onUpdateFileContent: (id: string) => (e: ChangeEvent<HTMLTextAreaElement>) => void
+  onNewFile: () => void
 }
 
-export const MainContent = ({ inputRef, file, onUpdateFileName, onUpdateFileContent }: ContentProps) => {
+export const MainContent = ({ inputRef, file, onUpdateFileName, onUpdateFileContent, onNewFile }: ContentProps) => {
   if (!file) {
     return null
   }
@@ -53,7 +54,7 @@ export const MainContent = ({ inputRef, file, onUpdateFileName, onUpdateFileCont
       <C.ContentRight>
         <C.Content dangerouslySetInnerHTML={{ __html: marked(file.content) }} />
       </C.ContentRight>
-      <C.AddButton />
+      <C.AddButton onClick={onNewFile} />
     </C.Container>
   )
 }

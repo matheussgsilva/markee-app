@@ -11,13 +11,17 @@ export const Container = styled.div`
 `
 
 export const ContentLeft = styled.div`
-    max-width: 550px;
+    width: 550px;
     padding: 25px 50px;  
 
     img {
         width: 25px;
         height: 25px;
         margin-right: 3px;
+    }
+
+    @media (max-width: 500px) {
+        max-width: 300px;
     }
 `
 
@@ -49,13 +53,14 @@ export const TextArea = styled.textarea`
 `
 
 export const ContentRight = styled.div`
-    max-width: 550px;
+    width: 550px;
     height: 80%;
     margin-top: 90px;
     border-left: 2px solid rgba(30, 41, 59, 0.12);
     padding: 0px 30px;
 
     @media (max-width: 500px) {
+        max-width: 300px;
         border-left: none;
         border-top: 2px solid rgba(30, 41, 59, 0.12);
     }

@@ -53,7 +53,7 @@ export const TextArea = styled.textarea`
 `
 
 export const ContentRight = styled.div`
-    width: 550px;
+    flex: 1;
     height: 80%;
     margin-top: 90px;
     border-left: 2px solid rgba(30, 41, 59, 0.12);

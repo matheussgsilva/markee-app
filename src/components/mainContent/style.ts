@@ -35,7 +35,7 @@ export const LeftHeader = styled.div`
 `
 
 export const Input = styled.input`
-    width: 100%;
+    max-width: 100%;
     border: none;
     outline: none;
     font-size: 1.8rem;
@@ -48,7 +48,7 @@ export const TextArea = styled.textarea`
     font-family: 'Inconsolata', monospace;
     font-size: 1.8rem;
     font-weight: 500;
-    width: 100%;
+    max-width: 100%;
     height: 85%;
     border: none;
     outline: none;

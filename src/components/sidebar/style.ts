@@ -28,6 +28,7 @@ export const Logo = styled.div`
         padding-left: 12px;
 
         img {
+            width: 150px;
             margin-bottom: 25px;
         }
     }

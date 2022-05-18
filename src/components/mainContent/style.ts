@@ -4,9 +4,12 @@ export const Container = styled.div`
     display: flex;
     background-color: ${({ theme }) => theme.colors.white};
     z-index: 1;
+    width: 80%;
+     
         
     @media (max-width: 500px) {
         flex-direction: column;
+        max-width: 90%;
     }
 `
 

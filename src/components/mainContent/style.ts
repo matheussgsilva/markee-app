@@ -21,7 +21,7 @@ export const ContentLeft = styled.div`
     }
 
     @media (max-width: 500px) {
-        flex-grow: 1;
+        max-width: 450px;
     }
 `
 
@@ -60,7 +60,7 @@ export const ContentRight = styled.div`
     padding: 0px 30px;
 
     @media (max-width: 500px) {
-        flex-grow: 1;
+        max-width: 450px;
         border-left: none;
         border-top: 2px solid rgba(30, 41, 59, 0.12);
     }

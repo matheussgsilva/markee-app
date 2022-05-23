@@ -48,7 +48,7 @@ export const TextArea = styled.textarea`
     font-family: 'Inconsolata', monospace;
     font-size: 1.8rem;
     font-weight: 500;
-    max-width: 100%;
+    width: 480px;
     height: 85%;
     border: none;
     outline: none;

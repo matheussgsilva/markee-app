@@ -3,13 +3,13 @@ import { theme } from 'resources/theme'
 
 export const Container = styled.aside<{setSidebar: boolean}>`
     position: relative;
-    width: 100%;
+    width: 20%;
     height: 100vh;
     background-color: ${({ theme }) => theme.colors.black};
     transition: 500ms;
 
     @media (max-width: 500px) {
-        width: ${props => props.setSidebar ? '15%' : '70%'};
+        width: ${props => props.setSidebar ? '25%' : '70%'};
     }
 `
 

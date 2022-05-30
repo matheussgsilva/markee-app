@@ -3,7 +3,7 @@ import { theme } from 'resources/theme'
 
 export const Container = styled.aside<{setSidebar: boolean}>`
     position: relative;
-    width: 20%;
+    width: 100%;
     height: 100vh;
     background-color: ${({ theme }) => theme.colors.black};
     transition: 500ms;

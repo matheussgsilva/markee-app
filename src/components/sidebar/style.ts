@@ -9,7 +9,7 @@ export const Container = styled.aside<{setSidebar: boolean}>`
     transition: 500ms;
 
     @media (max-width: 500px) {
-        width: ${props => props.setSidebar ? '15%' : '70%'};
+        width: ${props => props.setSidebar ? '25%' : '70%'};
     }
 `
 
